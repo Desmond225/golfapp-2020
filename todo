@@ -1,0 +1,19 @@
+0. determine which components to use for the app
+*Navbar, consisting of: 
+Homescreen:
+    consisting of a menu:
+        - play golf
+        - handicap index*
+        - about
+Scorecards:
+    consisting of:
+        - A list of played rounds, (later: then when clicked showing more options)
+Statistics:
+    consisting of:
+        - A list with different statistics (GIR, FIR, scramble, putting)
+        - Add more functions later, like clicking through stats
+Statistics:
+
+1. Remove redundant react-app boilerplate code
+2. build these components
+2.1 - Roundlist consist of a component called Rounds; Right now has hard-coded data, and needs to be rendered from the db.
