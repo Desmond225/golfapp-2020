@@ -51,7 +51,8 @@ class App extends Component {
     const { isSignedIn, route } = this.state;
     return (
       <div className="App">
-        <Navigation 
+        <Navigation
+          isSignedIn={this.state.isSignedIn} 
           onRouteChange={this.onRouteChange}
         />
         { route === 'home' 

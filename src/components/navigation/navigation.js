@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.png';
 
-const Navigation = ({onRouteChange}) => {
+const Navigation = ({onRouteChange, isSignedIn}) => {
+    if(isSignedIn) {
     return (
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
@@ -12,22 +13,31 @@ const Navigation = ({onRouteChange}) => {
                 <p 
                     className="f4 link dim pointer"
                     onClick={() => onRouteChange('roundlist')}
-                    >
-                        Show rounds
+                    >Show rounds
                 </p>
                 <p 
                     className="f4 link dim pointer"
                     onClick={() => onRouteChange('home')}
-                    >
-                        Home</p>
+                    >Home</p>
                 <p 
+                    className="f4 link dim pointer"
+                    onClick={() => onRouteChange('signout')}>
+                        Sign out</p>
+                {/* <p 
                     className="f4 link dim pointer"
                     onClick={() => onRouteChange('statistics')}
                     >
-                        Statistics</p>
+                        Statistics</p> */}
             </nav>
         </div>
-    )
+    )} else {
+        return (
+            <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+                <p className="f3 link dim black underline pa3 pointer" onClick={() => onRouteChange('signin')}>Sign in</p>
+                <p className="f3 link dim black underline pa3 pointer" onClick={() => onRouteChange('register')}>Register</p>
+            </nav>
+        )
+    }
 }
 
 export default Navigation
