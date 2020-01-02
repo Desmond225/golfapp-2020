@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   onSubmitRound = () => {
-    fetch('http://localhost:3005/rounds', {
+    fetch('http://localhost:3005/entry', {
       method: 'put',
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify({
@@ -50,8 +50,10 @@ class App extends Component {
   }
 
   onGetRounds = (req, res) => {
-    fetch('http://localhost:3005/rounds')
-    .then(res => res.json())
+    fetch('http://localhost:3005/rounds', {
+      method: 'get'
+    })
+    .then(res => res.json('rounds: ', res))
     .catch(console.log('error fetching rounds'));
   }
 
@@ -81,7 +83,7 @@ class App extends Component {
           ? 
           <div>
             <Menu />
-            <RoundList onGetRounds={this.onGetRounds} onSubmitRound={this.SubmitRound}/>
+            <RoundList onGetRounds={this.onGetRounds} onInputChange={this.onInputChange} onSubmitRound={this.onSubmitRound} />
           </div>
           : (
             route === 'signin'
