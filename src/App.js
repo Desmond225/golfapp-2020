@@ -18,7 +18,18 @@ class App extends Component {
         name: '',
         email: '',
         submitted_rounds: 0,
-        joined: ''
+        joined: '',
+        rounds: {
+          id: '',
+          score: '',
+          score_to_par: '',
+          playing_date: '',
+          course: '',
+          greens_in_regulation: '',
+          fairways_in_regulation: '',
+          putts: '',
+          putts_per_gir: ''
+        }
       }
     }
   }
@@ -29,33 +40,29 @@ class App extends Component {
       name: data.name,
       email: data.email,
       submitted_rounds: data.submitted_rounds,
-      joined: data.joined
+      joined: data.joined,
+      rounds: {
+        id: data.id,
+        score: data.score,
+        score_to_par: data.score_to_par,
+        playing_date: data.playing_date,
+        course: data.course,
+        greens_in_regulation: data.greens_in_regulation,
+        fairways_in_regulation: data.fairways_in_regulation,
+        putts: data.putts,
+        putts_per_gir:data.putts_per_gir
+      }
     }})
   }
 
-  onSubmitRound = () => {
-    fetch('http://localhost:3005/entry', {
-      method: 'put',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({
-        id: this.state.user.id
-      })
-    })
-    .then(response => response.json())
-    .then(count => {
-      this.setState(Object.assign(this.state.user, {submitted_rounds: count}))
-    })
-    .then(console.log('rounds submitted: ', this.state.user.submitted_rounds))
-    .catch(console.log('error submitting round'));
-  }
-
   onGetRounds = (req, res) => {
-    fetch('http://localhost:3005/rounds', {
-      method: 'get'
+    fetch('http://localhost:3005/rounds')
+    .then(response => response.json())
+    .then(rounds => {
+      console.log('rounds ', rounds);
     })
-    .then(res => res.json('rounds: ', res))
-    .catch(console.log('error fetching rounds'));
-  }
+    .catch(console.log('error fetching rounds')
+    )}
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
@@ -83,7 +90,12 @@ class App extends Component {
           ? 
           <div>
             <Menu />
-            <RoundList onGetRounds={this.onGetRounds} onInputChange={this.onInputChange} onSubmitRound={this.onSubmitRound} />
+            <RoundList 
+              onGetRounds={this.onGetRounds} 
+              // onScoreInputChange={this.onScoreInputChange}
+              // onScoreToParInputChange={this.onScoreToParInputChange}
+              // onSubmitRound={this.onSubmitRound} 
+              />
           </div>
           : (
             route === 'signin'
