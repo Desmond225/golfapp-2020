@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/navigation/navigation';
 import RoundList from './components/roundlist/roundlist';
 // import Statistics from './components/statistics/statistics';
-// import Menu from './components/menu/menu';
+import Menu from './components/menu/menu';
 import Signin from './components/signin/signin';
 import Register from './components/register/register';
 
@@ -33,6 +33,28 @@ class App extends Component {
     }})
   }
 
+  onSubmitRound = () => {
+    fetch('http://localhost:3005/rounds', {
+      method: 'put',
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({
+        id: this.state.user.id
+      })
+    })
+    .then(response => response.json())
+    .then(count => {
+      this.setState(Object.assign(this.state.user, {submitted_rounds: count}))
+    })
+    .then(console.log('rounds submitted: ', this.state.user.submitted_rounds))
+    .catch(console.log('error submitting round'));
+  }
+
+  onGetRounds = (req, res) => {
+    fetch('http://localhost:3005/rounds')
+    .then(res => res.json())
+    .catch(console.log('error fetching rounds'));
+  }
+
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
@@ -57,8 +79,10 @@ class App extends Component {
         />
         { route === 'home' 
           ? 
-            // <Menu />
-            <RoundList />
+          <div>
+            <Menu />
+            <RoundList onGetRounds={this.onGetRounds} onSubmitRound={this.SubmitRound}/>
+          </div>
           : (
             route === 'signin'
             ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>

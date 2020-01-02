@@ -17,3 +17,11 @@ Statistics:
 1. Remove redundant react-app boilerplate code
 2. build these components
 2.1 - Roundlist consist of a component called Rounds; Right now has hard-coded data, and needs to be rendered from the db.
+ -> Start building an express server to provide an API with endpoints for fetching rounds
+ -> Create DB for rounds
+
+--
+
+ create /user/id component
+ create /round/id component & endpoint
+ create /rounds & /entry endpoints

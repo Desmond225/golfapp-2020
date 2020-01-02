@@ -18,7 +18,7 @@ class Signin extends React.Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('http://localhost:3000/signin', {
+        fetch('http://localhost:3005/signin', {
             method: 'post',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -51,6 +51,7 @@ class Signin extends React.Component {
                             name="email-address"  
                             id="email-address"
                             onChange={this.onEmailChange}
+                            defaultValue="test@test.test"
                         />
                     </div>
                     <div className="mv3">
@@ -61,6 +62,7 @@ class Signin extends React.Component {
                             name="password"  
                             id="password"
                             onChange={this.onPasswordChange}
+                            defaultValue="test"
                         />
                     </div>
                     </fieldset>
