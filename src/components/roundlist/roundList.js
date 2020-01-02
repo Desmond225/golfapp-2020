@@ -5,11 +5,21 @@ import Round from '../round/round';
       constructor(props) {
         super(props);
         this.state = {
+            user: '',
             id: '',
             score: '',
             score_to_par: ''
         }
       }
+    
+    onLoadUserProfile = (event, req) => {
+        fetch('http://localhost:3005/profile/1') //make this a dynamic id
+            .then(response => response.json())
+            .then(user => 
+                this.setState({
+                    user: user
+                })
+            )}
 
       onScoreInputChange = (event) => {
         this.setState({score: event.target.value})
@@ -58,7 +68,18 @@ import Round from '../round/round';
         const { onGetRounds } = this.props;
         return (
             <div>
-                <button onClick={onGetRounds}>Get rounds</button>
+                <button onClick={this.onLoadUserProfile}>Get profile</button>
+                {this.state.user 
+                ?
+                <div>
+                    <h1>user: {this.state.user.email}</h1>
+                    <h6>joined: {this.state.user.joined} </h6>
+                    <h6>Submitted rounds: {this.state.user.submitted_rounds}</h6>
+                </div>
+                :
+                ''
+                }
+                {/* <button onClick={onGetRounds}>Get rounds</button> */}
             <div>
             <div className="mt3">
             <label className="db fw6 lh-copy f6" htmlFor="round-score">id</label>
