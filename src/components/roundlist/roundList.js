@@ -13,7 +13,10 @@ import Round from '../round/round';
       }
     
     onLoadUserProfile = (event, req) => {
-        fetch('http://localhost:3005/profile/1') //make this a dynamic id
+        fetch(`http://localhost:3005/profile/1`) 
+        // make this a dynamic id e.g. 
+        // fetch('http://localhost:3005/profile/${user.id}')
+
             .then(response => response.json())
             .then(user => 
                 this.setState({
@@ -81,7 +84,7 @@ import Round from '../round/round';
                 }
                 {/* <button onClick={onGetRounds}>Get rounds</button> */}
             <div>
-            <div className="mt3">
+            <div className="mt3 w-40 center">
             <label className="db fw6 lh-copy f6" htmlFor="round-score">id</label>
                             <input 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 

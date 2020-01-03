@@ -89,7 +89,7 @@ class App extends Component {
         { route === 'home' 
           ? 
           <div>
-            <Menu />
+            {/* <Menu /> */}
             <RoundList 
               onGetRounds={this.onGetRounds} 
               // onScoreInputChange={this.onScoreInputChange}
