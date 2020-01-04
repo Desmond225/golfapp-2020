@@ -80,8 +80,9 @@ class App extends Component {
 
   render() {
     const { isSignedIn, route } = this.state;
+    
     return (
-      <div className="App">
+      <div className="App landing-background" >
         <Navigation
           isSignedIn={this.state.isSignedIn} 
           onRouteChange={this.onRouteChange}
