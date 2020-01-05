@@ -25,3 +25,9 @@ Statistics:
  create /user/id component
  create /round/id component & endpoint
  create /rounds & /entry endpoints
+
+-- 05/01
+ created /entry
+ -> needs dropdowns for courses, tracks & tee colors
+ -> render db values into these dropdowns
+ -> write joins for courses-tracks (1to1) & tracks-tee colors(1to1)

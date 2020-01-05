@@ -11,6 +11,7 @@
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .App-logo {
@@ -46,4 +47,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.entry {
+  background: white;
+  width: 25%;
+  margin: 0 auto;
+  padding: 2rem;
 }
