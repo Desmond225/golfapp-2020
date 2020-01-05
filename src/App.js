@@ -6,12 +6,13 @@ import RoundList from './components/roundlist/roundlist';
 import Menu from './components/menu/menu';
 import Signin from './components/signin/signin';
 import Register from './components/register/register';
+import Entry from './components/entry/entry';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'signin',
+      route: 'home',
       isSignedIn: false,
       user: {
         id: '',
@@ -89,22 +90,26 @@ class App extends Component {
         />
         { route === 'home' 
           ? 
-          <div>
-            {/* <Menu /> */}
-            <RoundList 
+          <div class="w-50 mx-auto center">
+            <Menu onRouteChange={this.onRouteChange}/>
+            {/* <RoundList 
               onGetRounds={this.onGetRounds} 
               // onScoreInputChange={this.onScoreInputChange}
               // onScoreToParInputChange={this.onScoreToParInputChange}
               // onSubmitRound={this.onSubmitRound} 
-              />
+              /> */}
           </div>
           : (
-            route === 'signin'
-            ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-            : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          )        
+            route === 'entry'
+            ? 
+            <div class="entry">
+              <Entry />
+            </div>
+            :
+            <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            // : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+          ) 
         }
-
       </div>
     );
   }

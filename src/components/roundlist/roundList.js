@@ -83,36 +83,7 @@ import Round from '../round/round';
                 ''
                 }
                 {/* <button onClick={onGetRounds}>Get rounds</button> */}
-            <div>
-            <div className="mt3 w-40 center">
-            <label className="db fw6 lh-copy f6" htmlFor="round-score">id</label>
-                            <input 
-                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                type="number" 
-                                name="round-id"  
-                                id="round-id"
-                                onChange={this.onRoundIdInputChange}
-                            />
-                            <label className="db fw6 lh-copy f6" htmlFor="round-score">Score</label>
-                            <input 
-                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                type="number" 
-                                name="round-score"  
-                                id="round-score"
-                                onChange={this.onScoreInputChange}
-                            />
-    
-    <label className="db fw6 lh-copy f6" htmlFor="round-score">Score to par</label>
-                            <input 
-                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                type="number" 
-                                name="round-score-to-par"  
-                                id="round-score-to-par"
-                                onChange={this.onScoreToParInputChange}
-                            />
-                        </div>
-                <button onClick={this.onSubmitRound}>Submit round</button>
-            </div>
+
             <div style={{display: 'flex', flexDirection: 'column', width: '100vw'}}>
                 <Round />
             </div>
