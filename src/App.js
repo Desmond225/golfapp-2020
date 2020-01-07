@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import {connect} from 'react-redux';
 import './App.css';
 import Navigation from './components/navigation/navigation';
 import RoundList from './components/roundlist/roundlist';
@@ -7,6 +8,21 @@ import Menu from './components/menu/menu';
 import Signin from './components/signin/signin';
 import Register from './components/register/register';
 import Entry from './components/entry/entry';
+import { connect } from 'react-redux';
+
+// import {setSearchField} from './actions';
+
+// const mapStateToProps = state => {
+//   return {
+//     searchField: state.searchField
+//   }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+//   }
+// }
 
 class App extends Component {
   constructor() {
@@ -119,3 +135,4 @@ class App extends Component {
 
 
 export default App;
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

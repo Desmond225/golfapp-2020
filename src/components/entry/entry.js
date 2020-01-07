@@ -7,6 +7,19 @@ class Entry extends React.Component {
             courses: '',
             teeColors: ''
         }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    onStartRound() {
+        alert('starting round!');
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            courses: event.target.value,
+            teeColor: event.target.value
+        })
     }
 
     componentDidMount() {
@@ -43,7 +56,7 @@ class Entry extends React.Component {
     let teeColorOptions = arrayOfTeeColors.map((tee) =>
     <option 
         key={tee.id}
-        value={tee.id}
+        value={tee.tee_color}
     >
         {tee.tee_color}
     </option>
@@ -52,25 +65,37 @@ class Entry extends React.Component {
         <div>
         <div className="mt3 w-40 center">
             <label className="db fw6 lh-copy f6" htmlFor="round-score">Front Course</label>
-            <select name="customSearch" className="custom-search-select">
-                <option>Select Front Course</option>
+            <select 
+                name="frontCourse" 
+                className="custom-search-select"
+                onChange={this.handleChange}
+            >
+
                 {courseOptions}
            </select>
         </div>
-        <div className="mt3 w-40 center">
+        {/* <div className="mt3 w-40 center">
             <label className="db fw6 lh-copy f6" htmlFor="round-score">Back Course</label>
-            <select name="customSearch" className="custom-search-select">
+            <select 
+                name="customSearch" 
+                className="custom-search-select"
+                onChange={this.handleChange} 
+            >
                 <option>No back course</option>
                 {courseOptions}
            </select>
-        </div>
+        </div> */}
         <div className="mt3 w-40 center">
             <label className="db fw6 lh-copy f6" htmlFor="round-score">Tee Color</label>
-            <select name="customSearch" className="custom-search-select">
+            <select 
+                name="teeColor" 
+                className="custom-search-select"
+                onChange={this.handleChange} 
+            >
                 {teeColorOptions}
            </select>
         </div>
-            {/* <button onClick={this.onSubmitRound}>Submit round</button> */}
+            <button onClick={this.onStartRound}>Start round</button>
         </div>
     )
     }
