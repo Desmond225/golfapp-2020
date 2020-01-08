@@ -4,10 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
+import { createLogger } from 'redux-logger';
 // import { Provider, connect } from 'react-redux';
 // import { createStore } from 'redux';
+//import thunkMiddleware from 'redux-thunk';
 
-// const store = createStore(rootStore);
+// const logger = createLogger();
+// const rootReducer = combineReducers();
+
+// const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
+
+
 
 ReactDOM.render(
         <App />,
