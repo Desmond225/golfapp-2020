@@ -1,10 +1,21 @@
-// import {ADD_NEW_CONSTANT }from './constants';
+import {
+    CHANGE_SEARCH_FIELD,
+    REQUEST_ROUNDS_SUCCESS,
+    REQUEST_ROUNDS_FAILED,
+    REQUEST_ROUNDS_PENDING,
+} from './constants';
 
-// export const setNewAction = (prop) => {
-//     console.log(prop);
+export const setSearchField = (text) => {
+    return {
+        type: CHANGE_SEARCH_FIELD,
+        payload: text
+    }
+}
 
-//     return {
-//     type: ADD_NEW_CONSTANT,
-//     payload: text
-//     }
-// }
+export const requestRounds = () => (dispatch) => {
+    dispatch({type: REQUEST_ROUNDS_PENDING});
+    fetch('http://localhost:3005/rounds')
+    .then(response => response.json())
+    .then(data => dispatch({type: REQUEST_ROUNDS_SUCCESS, payload: data}))
+    .catch(error => dispatch({type: REQUEST_ROUNDS_FAILED, payload: error}))
+}

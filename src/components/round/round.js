@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Round = () => {
+const Round = ({ score, course, id }) => {
     return (
         <div
             className='pv3 ph3' 
@@ -11,17 +11,17 @@ const Round = () => {
                 <div 
                 className='f2 b ph3'
                 style={{alignSelf: 'center'}}
-                >75</div>
+                >{score}</div>
                 <div className='tl'>
-                    <div className='b'>January 01, 2020</div>
-                    <div>Golfbaan De Hoge Dijk</div>
+                    <div className='b'>{id}</div>
+                    <div>{course}</div>
                 </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                <div>+ 5</div>
-                <div>100%</div>
-                <div>90%</div>
-                <div>1.8</div>
+                <div>Score to par</div>
+                <div>FIR</div>
+                <div>GIR</div>
+                <div>Putts per gir</div>
             </div>
         </div>
     )

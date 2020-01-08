@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 import './App.css';
 import Navigation from './components/navigation/navigation';
 import RoundList from './components/roundlist/roundlist';
@@ -8,21 +8,25 @@ import Menu from './components/menu/menu';
 import Signin from './components/signin/signin';
 import Register from './components/register/register';
 import Entry from './components/entry/entry';
-import { connect } from 'react-redux';
 
-// import {setSearchField} from './actions';
+import {setSearchField, requestRounds} from './actions';
+import SearchBox from './components/searchbox/searchbox';
 
-// const mapStateToProps = state => {
-//   return {
-//     searchField: state.searchField
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchRounds.searchField,
+    rounds: state.requestRounds.rounds,
+    isPending: state.requestRounds.isPending,
+    error: state.requestRounds.error,
+  }
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onSearchChange: (event) => dispatch(setSearchField(event.target.value))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onRequestRounds: () => dispatch(requestRounds())
+  }
+}
 
 class App extends Component {
   constructor() {
@@ -36,19 +40,23 @@ class App extends Component {
         email: '',
         submitted_rounds: 0,
         joined: '',
-        rounds: {
-          id: '',
-          score: '',
-          score_to_par: '',
-          playing_date: '',
-          course: '',
-          greens_in_regulation: '',
-          fairways_in_regulation: '',
-          putts: '',
-          putts_per_gir: ''
-        }
+        // rounds: {
+        //   id: '',
+        //   score: '',
+        //   score_to_par: '',
+        //   playing_date: '',
+        //   course: '',
+        //   greens_in_regulation: '',
+        //   fairways_in_regulation: '',
+        //   putts: '',
+        //   putts_per_gir: ''
+        // }
       }
     }
+  }
+
+  componentDidMount() {
+    this.props.onRequestRounds();
   }
 
   loadUser = (data) => {
@@ -72,15 +80,6 @@ class App extends Component {
     }})
   }
 
-  onGetRounds = (req, res) => {
-    fetch('http://localhost:3005/rounds')
-    .then(response => response.json())
-    .then(rounds => {
-      console.log('rounds ', rounds);
-    })
-    .catch(console.log('error fetching rounds')
-    )}
-
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
@@ -97,8 +96,15 @@ class App extends Component {
 
   render() {
     const { isSignedIn, route } = this.state;
-    
-    return (
+    const { searchField, onSearchChange, rounds, isPending } = this.props;
+    const filteredRounds = rounds.filter(round => {
+      return round.course.toLowerCase().includes(searchField.toLowerCase());
+    })
+
+    return isPending ? 
+    <h1>Loading..</h1>
+    :
+    (
       <div className="App landing-background" >
         <Navigation
           isSignedIn={this.state.isSignedIn} 
@@ -106,14 +112,10 @@ class App extends Component {
         />
         { route === 'home' 
           ? 
-          <div class="w-50 mx-auto center">
+          <div className="w-50 mx-auto center">
             <Menu onRouteChange={this.onRouteChange}/>
-            {/* <RoundList 
-              onGetRounds={this.onGetRounds} 
-              // onScoreInputChange={this.onScoreInputChange}
-              // onScoreToParInputChange={this.onScoreToParInputChange}
-              // onSubmitRound={this.onSubmitRound} 
-              /> */}
+            <SearchBox searchChange={onSearchChange}/>
+              <RoundList rounds={filteredRounds} />
           </div>
           : (
             route === 'entry'
@@ -131,8 +133,4 @@ class App extends Component {
   }
 }
 
-
-
-
-export default App;
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

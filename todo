@@ -31,3 +31,8 @@ Statistics:
  -> needs dropdowns for courses, tracks & tee colors
  -> render db values into these dropdowns
  -> write joins for courses-tracks (1to1) & tracks-tee colors(1to1)
+
+-- 08/01
+Add new component to list all rounds, also to practice redux implementation
+Added redux; need to create stores, actions & reducers
+start refactoring code (see lesson 91)

@@ -6,13 +6,13 @@
   background: rgba(255,255,255,.5);
 }
 
-.landing-background {
+/* .landing-background {
   background: url('./img/main-background.jpg');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
+} */
 
 .App-logo {
   height: 40vmin;
