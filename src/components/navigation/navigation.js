@@ -10,15 +10,15 @@ const Navigation = ({onRouteChange, isSignedIn}) => {
                 <div style={{padding: '1rem', transform: 'rotate(90deg)'}}>...</div>
             </div>
             <nav style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'black', color: 'white', padding: '0 2rem'}}>
-                {/* <p 
-                    className="f4 link dim pointer"
-                    onClick={() => onRouteChange('roundlist')}
-                    >Show rounds
-                </p> */}
                 <p 
                     className="f4 link dim pointer"
                     onClick={() => onRouteChange('home')}
                     >Home</p>
+                <p 
+                    className="f4 link dim pointer"
+                    onClick={() => onRouteChange('roundlist')}
+                    >Show rounds
+                </p>
                 <p 
                     className="f4 link dim pointer"
                     onClick={() => onRouteChange('signout')}>

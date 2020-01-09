@@ -98,8 +98,9 @@ class App extends Component {
     const { isSignedIn, route } = this.state;
     const { searchField, onSearchChange, rounds, isPending } = this.props;
     const filteredRounds = rounds.filter(round => {
-      return round.course.toLowerCase().includes(searchField.toLowerCase());
-    })
+        console.log('round', round);
+        return round.course.toLowerCase().includes(searchField.toLowerCase())
+    });
 
     return isPending ? 
     <h1>Loading..</h1>
@@ -114,15 +115,17 @@ class App extends Component {
           ? 
           <div className="w-50 mx-auto center">
             <Menu onRouteChange={this.onRouteChange}/>
-            <SearchBox searchChange={onSearchChange}/>
-              <RoundList rounds={filteredRounds} />
+
           </div>
           : (
-            route === 'entry'
-            ? 
-            <div class="entry">
-              <Entry />
+            route === 'roundlist'
+            ?
+            isSignedIn ? 
+            <div class="roundlist">
+              <SearchBox searchChange={onSearchChange}/>
+               <RoundList rounds={filteredRounds} />
             </div>
+            : 'Login to see this content!'
             :
             <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             // : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
