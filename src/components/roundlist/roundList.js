@@ -3,13 +3,14 @@ import Round from '../round/round';
 import SearchBox from '../searchbox/searchbox';
 import Scroll from '../scroll/scroll';
 
-const RoundList = ({rounds}) => {
+const RoundList = ({rounds, showRoundDetail}) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100vw'}}>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
           {
             rounds.map((user, i) => {
               return (
-                <Round 
+                <Round
+                showRoundDetail={showRoundDetail[i]}
                 key={i}
                 id={rounds[i].id}
                 playing_date={rounds[i].playing_date}

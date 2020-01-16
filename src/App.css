@@ -1,3 +1,14 @@
+#root {
+  max-width: 414px;
+  margin: 5rem auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-height: 736px;
+  min-height: 736px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Menu = ({onRouteChange}) => {
     return (
     <div className={{display: 'flex', flexDirection: 'column'}}>

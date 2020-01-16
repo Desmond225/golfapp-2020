@@ -94,6 +94,10 @@ class App extends Component {
     this.setState({route: route});
   }
 
+  showRoundDetail = () => {
+    console.log('clicked rounds');
+  }
+
   render() {
     const { isSignedIn, route } = this.state;
     const { searchField, onSearchChange, rounds, isPending } = this.props;
@@ -113,7 +117,7 @@ class App extends Component {
         />
         { route === 'home' 
           ? 
-          <div className="w-50 mx-auto center">
+          <div className="mx-auto center">
             <Menu onRouteChange={this.onRouteChange}/>
 
           </div>
@@ -123,7 +127,9 @@ class App extends Component {
             isSignedIn ? 
             <div class="roundlist">
               <SearchBox searchChange={onSearchChange}/>
-               <RoundList rounds={filteredRounds} />
+               <RoundList 
+               rounds={filteredRounds}
+               showRoundDetail={this.showRoundDetail} />
             </div>
             : 'Login to see this content!'
             :
