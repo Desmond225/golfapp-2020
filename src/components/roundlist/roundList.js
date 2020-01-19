@@ -5,7 +5,7 @@ import Scroll from '../scroll/scroll';
 
 const RoundList = ({rounds, showRoundDetail}) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div style={{display: 'flex', flexDirection: 'column', overflow: 'hidden'}}>
           {
             rounds.map((user, i) => {
               return (
