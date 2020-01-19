@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7860f6b06f4a7832ec5e220406b1b88d",
+    "revision": "56f50124fb7386efeed713ade2c5efb9",
     "url": "/golfapp-2020/index.html"
   },
   {
