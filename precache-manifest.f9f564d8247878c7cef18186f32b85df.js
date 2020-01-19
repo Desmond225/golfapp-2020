@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7130ae58ddb65859482e30ed78bda12",
+    "revision": "7860f6b06f4a7832ec5e220406b1b88d",
     "url": "/golfapp-2020/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/golfapp-2020/static/css/2.eb45ad44.chunk.css"
   },
   {
-    "revision": "980c83e7144eea6f3f37",
+    "revision": "f8aa3605c6374f42edee",
     "url": "/golfapp-2020/static/css/main.55c68f93.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/golfapp-2020/static/js/2.22419d15.chunk.js.LICENSE"
   },
   {
-    "revision": "980c83e7144eea6f3f37",
-    "url": "/golfapp-2020/static/js/main.1cc06044.chunk.js"
+    "revision": "f8aa3605c6374f42edee",
+    "url": "/golfapp-2020/static/js/main.a52d40f9.chunk.js"
   },
   {
     "revision": "ec845e7bc53568bf075b",

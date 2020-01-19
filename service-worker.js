@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/golfapp-2020/precache-manifest.5b53b9c1977ba665ed6374255abc6b78.js"
+  "/golfapp-2020/precache-manifest.f9f564d8247878c7cef18186f32b85df.js"
 );
 
 self.addEventListener('message', (event) => {
